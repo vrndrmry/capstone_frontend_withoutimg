@@ -7,19 +7,21 @@ export default function CreatePost() {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [redirect, setRedirect] = useState(false);
+  
   async function createNewPost(e) {
+    e.preventDefault();
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-    e.preventDefault();
+   
     const response = await fetch("https://car-blog-community-backend-withoutimg1.onrender.com/post", {
       method: "POST",
       body: data,
       credentials: "include",
     });
+    console.log(response)
     if (response.ok) {
-      console.log(response)
       setRedirect(true);
     }
   }
