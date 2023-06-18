@@ -10,7 +10,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/` + id).then((res) => {
+    fetch(`https://car-blog-community-backend-withoutimg1.onrender.com/post/` + id).then((res) => {
       res.json().then((postInfo) => {
         setTitle(postInfo.title);
         setContent(postInfo.content);
@@ -27,7 +27,7 @@ export default function EditPost() {
     data.set("content", content);
     data.set("id", id);
 
-    const response = await fetch(`http://localhost:4000/post`, {
+    const response = await fetch(`https://car-blog-community-backend-withoutimg1.onrender.com/post`, {
       method: "PUT",
       body: data,
       credentials: "include",
